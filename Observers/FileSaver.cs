@@ -1,8 +1,9 @@
+using System;
 using System.IO;
 
 namespace Observers
 {
-    public class FileSaver : IObserver<AbstractStringSubject>
+    public class FileSaver : IObserver<AbstractStringSubject>, IDisposable
     {
         private readonly TextWriter _file;
 
@@ -11,15 +12,19 @@ namespace Observers
             _file = new StreamWriter(fileName);
         }
 
+  
+
         public void Update(AbstractStringSubject sub)
         {
             _file.WriteLine(sub.Item);
         }
 
-        // Destrutor
-        ~FileSaver()
+
+        public void Dispose()
         {
-            _file.Close();
+            _file?.Dispose();
         }
+
+
     }
 }
