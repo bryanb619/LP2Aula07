@@ -5,17 +5,22 @@ namespace Observers
     public class FileSaver : IObserver<AbstractStringSubject>
     {
 
-
-        private readonly string _fileName;
+        private readonly TextWriter _file;
 
         public FileSaver(string fileName)
         {
-            _fileName = fileName;
+            _file = new StreamWriter(fileName);
         }
 
         public void Update(AbstractStringSubject sub)
         {
-            File.AppendAllText(_fileName, sub.Item + "\n");
+            _file.WriteLine(sub.Item);
+        }
+
+        // Destrutor
+        ~FileSaver()
+        {
+            _file.Close();
         }
     }
 }
