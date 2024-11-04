@@ -4,7 +4,6 @@ namespace Observers
 {
     public class FileSaver : IObserver<AbstractStringSubject>
     {
-
         private readonly TextWriter _file;
 
         public FileSaver(string fileName)
