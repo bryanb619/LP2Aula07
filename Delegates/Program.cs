@@ -19,7 +19,12 @@ namespace Delegates
         {
             //Console.WriteLine("Hello, World!");
 
-            StringOp strOp = null;
+            //StringOp strOp = null;
+            
+            Action<string> strOp = null;
+
+            /// 2 parametro, 1 retorno
+            // func <int, int, int>
 
             strOp += PrintUpper;
 
@@ -30,7 +35,6 @@ namespace Delegates
             strOp += joiner.JoinAnPrint;
 
             strOp.Invoke("tudo");
-            
         }
     }
 }
